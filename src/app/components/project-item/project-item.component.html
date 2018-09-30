@@ -21,6 +21,9 @@
 			<mat-card-title class="proj-name">
 				<h3>{{project.name | uppercase}}</h3>
 			</mat-card-title>
+			<mat-card-subtitle>
+				<p>Last modified on: {{project.updated_on | date: 'dd/MM/yyyy'}}</p>
+			</mat-card-subtitle>
 		</mat-card-header>
 		<img mat-card-image src="{{project.links.avatar.href}}"
 			(click)="showSidePanel = !showSidePanel;" />
