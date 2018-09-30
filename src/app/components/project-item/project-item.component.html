@@ -1,19 +1,18 @@
-<div fxLayout="row" fxLayoutGap="5px" fxLayoutAlign="center stretch">
-	<mat-card *ngIf="showSidePanel;" fxFill fxHide.lt-md="true"
-		[@sidePanelAnimation]="showSidePanel" class="info-card">
+<div fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="5px" fxLayoutAlign="center stretch">
+	<mat-card *ngIf="showSidePanel;" class="info-card" fxFill
+		[@sidePanelAnimation]="showSidePanel" fxHide.lt-md="true">
 		<mat-card-header>
 			<mat-card-title>
-				<h3>Details</h3>
+				<h3>Clone</h3>
 			</mat-card-title>
-			<mat-card-subtitle>
-				<p>Created on: {{project.created_on | date: 'dd/MM/yyyy'}}</p>
-			</mat-card-subtitle>
 		</mat-card-header>
 		<mat-card-content>
-			<p *ngIf="project.description"><strong>About:</strong> {{project.description}}</p>
-			<p><strong>Does it have issues?</strong> {{project.has_issues? 'Yes' : 'No'}}.</p>
-			<p><strong>Size:</strong> {{project.size}} bytes.</p>
-			<p><strong>Main language:</strong> {{project.language}}.</p>
+			<p *ngFor="let method of project.links.clone;" class="clone-methods">
+				<strong>{{method.name}}:</strong>
+				<mat-form-field>
+					<input matInput value="{{method.href}}" disabled />
+				</mat-form-field>
+			</p>
 		</mat-card-content>
 	</mat-card>
 
@@ -32,20 +31,21 @@
 		</mat-card-actions>
 	</mat-card>
 
-	<mat-card *ngIf="showSidePanel;" fxFill fxHide.lt-md="true"
-		[@sidePanelAnimation]="showSidePanel" class="info-card">
+	<mat-card *ngIf="showSidePanel;" class="info-card" fxFill
+		[@sidePanelAnimation]="showSidePanel">
 		<mat-card-header>
 			<mat-card-title>
-				<h3>Clone</h3>
+				<h3>Details</h3>
 			</mat-card-title>
+			<mat-card-subtitle>
+				<p>Created on: {{project.created_on | date: 'dd/MM/yyyy'}}</p>
+			</mat-card-subtitle>
 		</mat-card-header>
 		<mat-card-content>
-			<p *ngFor="let method of project.links.clone;" class="clone-methods">
-				<strong>{{method.name}}:</strong>
-				<mat-form-field>
-					<input matInput value="{{method.href}}" disabled />
-				</mat-form-field>
-			</p>
+			<p *ngIf="project.description"><strong>About:</strong> {{project.description}}</p>
+			<p><strong>Does it have issues?</strong> {{project.has_issues? 'Yes' : 'No'}}.</p>
+			<p><strong>Size:</strong> {{project.size}} bytes.</p>
+			<p><strong>Main language:</strong> {{project.language}}.</p>
 		</mat-card-content>
 	</mat-card>
 </div>
