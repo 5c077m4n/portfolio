@@ -12,8 +12,7 @@ export class FooterComponent implements OnInit {
 	constructor(
 		private iconRegistry: MatIconRegistry,
 		private sanitizer: DomSanitizer
-	) {}
-	ngOnInit() {
+	) {
 		this.iconRegistry.addSvgIcon(
 			'linkedIn',
 			this.sanitizer.bypassSecurityTrustResourceUrl('assets/images/icons/linkedIn.svg')
@@ -27,4 +26,5 @@ export class FooterComponent implements OnInit {
 			this.sanitizer.bypassSecurityTrustResourceUrl('assets/images/icons/code.svg')
 		);
 	}
+	ngOnInit() {}
 }
