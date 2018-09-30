@@ -6,6 +6,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatSliderModule } from '@angular/material/slider';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 
 const modules = [
@@ -14,7 +16,9 @@ const modules = [
 	MatButtonModule,
 	MatIconModule,
 	MatTooltipModule,
-	MatSliderModule
+	MatSliderModule,
+	MatFormFieldModule,
+	MatInputModule,
 ];
 
 @NgModule({
