@@ -1,1 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
+
+body {
+	background-image: url('/assets/images/main-background.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-attachment: fixed;
+	margin: 5px;
+	font-family: 'Roboto', sans-serif;
+}
+
+a, a:visited { color: #8e8989; }
+a:hover { color: #565656; }

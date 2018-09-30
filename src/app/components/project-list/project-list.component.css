@@ -1,0 +1,19 @@
+ul {
+	list-style: none;
+	padding: 0;
+	overflow: hidden;
+}
+.proj-item {
+	display: inline-block;
+	list-style-type: none;
+	width: 200px;
+}
+#proj-slider {
+	margin: 0 auto;
+	text-align: center;
+	width: 90%;
+}
+#loading-p {
+	margin: 0 auto;
+	padding: 5px;
+}

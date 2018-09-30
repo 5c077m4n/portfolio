@@ -1,0 +1,7 @@
+.sm-link {
+	width: 25px;
+	display: inline-block;
+	margin-right: 10px;
+	transition: fill 0.1s ease;
+}
+.sm-link:hover { fill: #0077B5; }

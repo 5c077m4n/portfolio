@@ -1,0 +1,14 @@
+<mat-card matTooltip="{{project.description}}">
+	<mat-card-header>
+		<mat-card-title>
+			<strong>{{project.name | uppercase}}</strong>
+		</mat-card-title>
+	</mat-card-header>
+	<img mat-card-image src="{{project.links.avatar.href}}" />
+	<mat-card-actions>
+		<a mat-button href="{{project.links.html.href}}"
+			class="source-link" target="_blank">
+			View Source <mat-icon svgIcon="code"></mat-icon>
+		</a>
+	</mat-card-actions>
+</mat-card>

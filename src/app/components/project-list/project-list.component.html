@@ -1,0 +1,23 @@
+<div *ngIf="projects; else loading;">
+	<div fxShow.gt-xs="true" fxHide.xs="true"
+		fxLayout="column" fxLayoutAlign="center center">
+		<mat-slider id="proj-slider" [(ngModel)]="value"
+			min="1" max="{{projects.length}}">
+		</mat-slider>
+		<app-project-item class="proj-item" [project]="projects[value-1]"></app-project-item>
+	</div>
+	<div fxShow.lt-sm="true" fxHide.gt-xs="true">
+		<ul fxLayout="column"
+			fxLayoutGap="5px" fxLayoutAlign="center center">
+			<li class="proj-item" *ngFor="let project of projects;">
+				<app-project-item [project]="project"></app-project-item>
+			</li>
+		</ul>
+	</div>
+</div>
+
+<ng-template #loading>
+	<p id="loading-p">Just a second, getting the projects...</p>
+</ng-template>
+
+<app-footer></app-footer>
