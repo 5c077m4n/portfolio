@@ -1,3 +1,4 @@
-.info-card { background-color: transparent; }
 .clone-methods { overflow: auto; }
 .proj-name { height: 30px; }
+.info-card { background-color: transparent; }
+.info-card > img[mat-card-image] { opacity: 0.5; }
