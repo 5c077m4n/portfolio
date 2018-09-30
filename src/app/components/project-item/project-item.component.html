@@ -2,7 +2,7 @@
 	<mat-card matTooltip="{{project.description}}" fxFill>
 		<mat-card-header (click)="showSidePanel = !showSidePanel;">
 			<mat-card-title>
-				<strong>{{project.name | uppercase}}</strong>
+				<h3>{{project.name | uppercase}}</h3>
 			</mat-card-title>
 		</mat-card-header>
 		<img mat-card-image src="{{project.links.avatar.href}}"
@@ -17,17 +17,17 @@
 	<mat-card *ngIf="showSidePanel;" fxFill fxHide.lt-md="true">
 		<mat-card-header>
 			<mat-card-title>
-				<p><strong>Details</strong></p>
+				<h3><strong>Details</strong></h3>
 			</mat-card-title>
 			<mat-card-subtitle>
 				<p>Created on: {{project.created_on | date: 'dd/MM/yyyy'}}</p>
 			</mat-card-subtitle>
 		</mat-card-header>
 		<mat-card-content>
-			<p *ngIf="project.description">About: {{project.description}}</p>
-			<p>Does it have issues? {{project.has_issues? 'Yes' : 'No'}}.</p>
-			<p>Size: {{project.size}} bytes.</p>
-			<p>Main language: {{project.language}}.</p>
+			<p *ngIf="project.description"><strong>About:</strong> {{project.description}}</p>
+			<p><strong>Does it have issues?</strong> {{project.has_issues? 'Yes' : 'No'}}.</p>
+			<p><strong>Size:</strong> {{project.size}} bytes.</p>
+			<p><strong>Main language:</strong> {{project.language}}.</p>
 		</mat-card-content>
 	</mat-card>
 </div>
