@@ -6,8 +6,8 @@
 				<h3>Clone</h3>
 			</mat-card-title>
 		</mat-card-header>
-		<mat-card-content>
-			<p *ngFor="let method of project.links.clone;" class="clone-methods">
+		<mat-card-content class="clone-methods">
+			<p *ngFor="let method of project.links.clone;">
 				<strong>{{method.name}}:</strong>
 				<mat-form-field>
 					<input matInput value="{{method.href}}" disabled />
@@ -18,7 +18,7 @@
 
 	<mat-card matTooltip="{{project.description}}" fxFill>
 		<mat-card-header (click)="showSidePanel = !showSidePanel;">
-			<mat-card-title>
+			<mat-card-title class="proj-name">
 				<h3>{{project.name | uppercase}}</h3>
 			</mat-card-title>
 		</mat-card-header>
