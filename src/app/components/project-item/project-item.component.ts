@@ -9,6 +9,7 @@ import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core
 })
 export class ProjectItemComponent implements OnInit {
 	@Input() public project;
+	public showSidePanel = false;
 	constructor() {}
 	ngOnInit() {}
 }
