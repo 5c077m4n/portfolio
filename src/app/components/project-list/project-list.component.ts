@@ -27,7 +27,6 @@ export class ProjectListComponent implements OnInit {
 	@HostListener('document:mousewheel', ['$event'])
 	onMouseWheel(event: MouseWheelEvent): void {
 		if(event.isTrusted) {
-			event.preventDefault();
 			if((event.deltaY > 0) && (this.value < this.projects.length))
 				this.value++;
 			if((event.deltaY < 0) && (this.value > 1))
