@@ -1,4 +1,6 @@
-import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import {
+	Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef, HostListener
+} from '@angular/core';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
@@ -20,6 +22,17 @@ export class ProjectListComponent implements OnInit {
 	) {}
 	ngOnInit() {
 		this.project$.subscribe();
+	}
+
+	@HostListener('document:mousewheel', ['$event'])
+	onMouseWheel(event: MouseWheelEvent): void {
+		if(event.isTrusted) {
+			event.preventDefault();
+			if((event.deltaY > 0) && (this.value < this.projects.length))
+				this.value++;
+			if((event.deltaY < 0) && (this.value > 1))
+				this.value--;
+		}
 	}
 
 	public get project$(): Observable<any> {

@@ -1,4 +1,6 @@
-<div *ngIf="projects; else loading;">
+<div *ngIf="projects; else loading;"
+	(mouseWheelUp)="onWheelUp($event)"
+	(mouseWheelDown)="onWheeleDown($event)">
 	<div fxShow.gt-xs="true" fxHide.xs="true"
 		fxLayout="column" fxLayoutAlign="center center">
 		<mat-slider id="proj-slider" [(ngModel)]="value"
