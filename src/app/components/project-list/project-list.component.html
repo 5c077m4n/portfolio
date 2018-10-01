@@ -1,14 +1,12 @@
-<div *ngIf="projects; else loading;"
-	(mouseWheelUp)="onWheelUp($event)"
-	(mouseWheelDown)="onWheeleDown($event)">
-	<div fxShow.gt-xs="true" fxHide.xs="true"
+<div *ngIf="projects; else loading;">
+	<div fxShow.gt-sm fxHide.lt-md
 		fxLayout="column" fxLayoutAlign="center center">
 		<mat-slider id="proj-slider" [(ngModel)]="value"
 			min="1" max="{{projects.length}}">
 		</mat-slider>
 		<app-project-item class="proj-item" [project]="projects[value-1]"></app-project-item>
 	</div>
-	<div fxShow.lt-sm="true" fxHide.gt-xs="true">
+	<div fxHide.gt-sm fxShow.lt-md>
 		<ul fxLayout="column"
 			fxLayoutGap="5px" fxLayoutAlign="center center">
 			<li class="proj-item" *ngFor="let project of projects;">

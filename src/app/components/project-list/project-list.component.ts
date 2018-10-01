@@ -1,8 +1,8 @@
 import {
 	Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef, HostListener
 } from '@angular/core';
-import { Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { Observable, fromEvent, interval } from 'rxjs';
+import { tap, startWith, debounce, map, throttleTime, switchMap } from 'rxjs/operators';
 
 import { PorfolioService } from '../../services/porfolio.service';
 

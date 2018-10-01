@@ -1,6 +1,6 @@
 <div fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="5px" fxLayoutAlign="center stretch">
 	<mat-card *ngIf="showSidePanel;" class="info-card" fxFill
-		[@sidePanelAnimation]="showSidePanel" fxHide.lt-md="true">
+		[@sidePanelAnimation]="showSidePanel" fxHide.lt-md fxShow.gt-sm>
 		<mat-card-header>
 			<mat-card-title>
 				<h3>Clone</h3>
