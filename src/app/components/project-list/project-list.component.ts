@@ -14,27 +14,27 @@ import { PorfolioService } from '../../services/porfolio.service';
 	styleUrls: ['./project-list.component.css']
 })
 export class ProjectListComponent implements OnInit, OnDestroy {
+	private listener: Subscription;
 	public projects: any[];
 	public projectIndex = 1;
 	public screenSize: number = window.innerWidth;
-	private listeners: Subscription[] = [];
 	constructor(
 		private portfolio: PorfolioService,
 		private cdr: ChangeDetectorRef
-	) {}
+	) {
+		this.listener = new Subscription();
+	}
 	ngOnInit() {
-		this.listeners.push(
-			this.onScreenResize$.subscribe(),
-			this.onMouseWheel$.subscribe(),
-			this.project$.subscribe(),
-		);
+		this.listener.add(this.project$.subscribe());
+		this.listener.add(this.onScreenResize$.subscribe());
+		this.listener.add(this.onMouseWheel$.subscribe());
 	}
 
 	public get project$(): Observable<any> {
 		return this.portfolio.getProjects()
 			.pipe(
 				map((res: any) => (res)? res.values : []),
-				tap(arr => this.projects = arr),
+				tap(projects => this.projects = projects),
 				tap(_ => this.cdr.detectChanges())
 			);
 	}
@@ -42,7 +42,7 @@ export class ProjectListComponent implements OnInit, OnDestroy {
 		return fromEvent(document, 'mousewheel')
 			.pipe(
 				tap((event: MouseWheelEvent) => {
-					if(event.isTrusted) {
+					if(event.isTrusted && (this.screenSize > 960)) {
 						if((event.deltaY > 0) && (this.projectIndex < this.projects.length))
 							this.projectIndex++;
 						if((event.deltaY < 0) && (this.projectIndex > 1))
@@ -55,14 +55,12 @@ export class ProjectListComponent implements OnInit, OnDestroy {
 	public get onScreenResize$(): Observable<any> {
 		return fromEvent(window, 'resize')
 			.pipe(
-				tap((event: any) => {
-					if(event.isTrusted) this.screenSize = event.target.innerWidth;
-				}),
+				tap((event: any) => this.screenSize = event.target.innerWidth),
 				tap(_ => this.cdr.detectChanges()),
 			);
 	}
 
 	ngOnDestroy(): void {
-		this.listeners.forEach(listener => listener.unsubscribe());
+		this.listener.unsubscribe();
 	}
 }
