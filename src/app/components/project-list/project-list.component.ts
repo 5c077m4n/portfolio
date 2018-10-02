@@ -17,11 +17,11 @@ export class ProjectListComponent implements OnInit, OnDestroy {
 	private listener: Subscription;
 	public projects: any[];
 	public projectIndex = 1;
-	public loadingErrorMessage = '';
+	public loadingErrorMessage: string;
 	public screenSize: number = window.innerWidth;
 	constructor(
 		private portfolio: PorfolioService,
-		private cdr: ChangeDetectorRef
+		private cdr: ChangeDetectorRef,
 	) {
 		this.listener = new Subscription();
 	}
@@ -31,6 +31,7 @@ export class ProjectListComponent implements OnInit, OnDestroy {
 		this.listener.add(this.onMouseWheel$.subscribe());
 		window.setTimeout(
 			() => {
+				if(this.projects) return;
 				this.loadingErrorMessage = ' (if this is taking too long there might be an error with the Bitbucket API)';
 				this.cdr.detectChanges();
 			},
@@ -43,7 +44,7 @@ export class ProjectListComponent implements OnInit, OnDestroy {
 			.pipe(
 				map((res: any) => (res)? res.values : undefined),
 				tap(projects => this.projects = projects),
-				tap(_ => this.cdr.detectChanges())
+				tap(_ => this.cdr.detectChanges()),
 			);
 	}
 	public get onMouseWheel$(): Observable<any> {
