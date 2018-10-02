@@ -14,7 +14,6 @@ import { HttpClient } from '@angular/common/http';
 				tap(res => {
 					if(!res) console.error('There was an error in getting the portfolio.');
 				}),
-				map((res: any) => (res)? res.values : []),
 				catchError(this.handleError('getProjects', []))
 			);
 	}

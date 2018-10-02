@@ -1,19 +1,22 @@
 <div *ngIf="projects; else loading;">
-	<div fxShow.gt-sm fxHide.lt-md
-		fxLayout="column" fxLayoutAlign="center center">
-		<mat-slider id="proj-slider" [(ngModel)]="value"
-			min="1" max="{{projects.length}}">
-		</mat-slider>
-		<app-project-item class="proj-item" [project]="projects[value-1]"></app-project-item>
-	</div>
-	<div fxHide.gt-sm fxShow.lt-md>
-		<ul fxLayout="column"
-			fxLayoutGap="5px" fxLayoutAlign="center center">
+	<ng-container *ngIf="screenSize > 960; then fullView else mobileView;"></ng-container>
+	<ng-template #fullView>
+		<div fxLayout="column" fxLayoutAlign="center center">
+			<mat-slider id="proj-slider" [(ngModel)]="projectIndex"
+				min="1" max="{{projects.length}}">
+			</mat-slider>
+			<app-project-item class="proj-item"
+				[project]="projects[projectIndex-1]">
+			</app-project-item>
+		</div>
+	</ng-template>
+	<ng-template #mobileView>
+		<ul fxLayout="column" fxLayoutGap="5px" fxLayoutAlign="center center">
 			<li class="proj-item" *ngFor="let project of projects;">
 				<app-project-item [project]="project"></app-project-item>
 			</li>
 		</ul>
-	</div>
+	</ng-template>
 </div>
 
 <ng-template #loading>
