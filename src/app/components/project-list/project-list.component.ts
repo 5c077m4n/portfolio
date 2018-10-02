@@ -49,9 +49,9 @@ export class ProjectListComponent implements OnInit, OnDestroy {
 			);
 	}
 	public get onMouseWheel$(): Observable<any> {
-		return fromEvent(document, 'mousewheel')
+		return fromEvent(document, 'wheel')
 			.pipe(
-				tap((event: MouseWheelEvent) => {
+				tap((event: WheelEvent) => {
 					if(event.isTrusted && (this.screenSize > this.MOBILE_SCREEN_SIZE)) {
 						if((event.deltaY > 0) && (this.projectIndex < this.projects.length))
 							this.projectIndex++;
