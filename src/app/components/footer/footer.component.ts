@@ -26,8 +26,16 @@ export class FooterComponent implements OnInit {
 			this.sanitizer.bypassSecurityTrustResourceUrl('assets/images/icons/code.svg')
 		);
 		this.iconRegistry.addSvgIcon(
+			'github',
+			this.sanitizer.bypassSecurityTrustResourceUrl('assets/images/icons/github.svg')
+		);
+		this.iconRegistry.addSvgIcon(
 			'bitbucket',
 			this.sanitizer.bypassSecurityTrustResourceUrl('assets/images/icons/bitbucket.svg')
+		);
+		this.iconRegistry.addSvgIcon(
+			'npm',
+			this.sanitizer.bypassSecurityTrustResourceUrl('assets/images/icons/npm.svg')
 		);
 	}
 	ngOnInit() {}
