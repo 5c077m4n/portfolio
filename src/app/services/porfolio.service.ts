@@ -1,20 +1,21 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { tap, catchError, map } from 'rxjs/operators';
+import { tap, catchError, map, retry, delay, retryWhen, take } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 
 
 @Injectable({ providedIn: 'root' }) export class PorfolioService {
-	private readonly URL = 'https://api.bitbucket.org/2.0/repositories/5c077m4n?sort=-updated_on';
+	private readonly URL = 'https://api.bitbucket.org/2.0/repositories/5c077m4n';
 	constructor(private http: HttpClient) {}
 
-	public getProjects(): Observable<any> {
-		return this.http.get(this.URL)
+	public get10NewestProjects(): Observable<any> {
+		return this.http.get(`${this.URL}?sort=-updated_on`)
 			.pipe(
 				tap(res => {
 					if(!res) console.error('There was an error in getting the portfolio.');
 				}),
-				catchError(this.handleError('getProjects', []))
+				retryWhen(error => error.pipe(delay(3000), take(5))),
+				catchError(this.handleError('getProjects', [])),
 			);
 	}
 

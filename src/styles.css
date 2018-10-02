@@ -1,12 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
 
-body {
+html {
 	background-image: url('assets/images/main-background.jpg');
 	background-repeat: no-repeat;
 	background-size: cover;
-	margin: 5px;
 	font-family: 'Roboto', sans-serif;
 }
-
+body { margin: 5px; }
 a, a:visited { color: #8e8989; }
 a:hover { color: #565656; }

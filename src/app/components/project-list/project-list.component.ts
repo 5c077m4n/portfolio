@@ -17,6 +17,7 @@ export class ProjectListComponent implements OnInit, OnDestroy {
 	private listener: Subscription;
 	public projects: any[];
 	public projectIndex = 1;
+	public loadingErrorMessage = '';
 	public screenSize: number = window.innerWidth;
 	constructor(
 		private portfolio: PorfolioService,
@@ -28,12 +29,19 @@ export class ProjectListComponent implements OnInit, OnDestroy {
 		this.listener.add(this.project$.subscribe());
 		this.listener.add(this.onScreenResize$.subscribe());
 		this.listener.add(this.onMouseWheel$.subscribe());
+		window.setTimeout(
+			() => {
+				this.loadingErrorMessage = ' (if this is taking too long there might be an error with the Bitbucket API)';
+				this.cdr.detectChanges();
+			},
+			5000
+		);
 	}
 
 	public get project$(): Observable<any> {
-		return this.portfolio.getProjects()
+		return this.portfolio.get10NewestProjects()
 			.pipe(
-				map((res: any) => (res)? res.values : []),
+				map((res: any) => (res)? res.values : undefined),
 				tap(projects => this.projects = projects),
 				tap(_ => this.cdr.detectChanges())
 			);
