@@ -15,10 +15,11 @@ import { PorfolioService } from '../../services/porfolio.service';
 })
 export class ProjectListComponent implements OnInit, OnDestroy {
 	private listener: Subscription;
-	public projects: any[];
+	public projects: any[] = [];
 	public projectIndex = 1;
 	public loadingErrorMessage: string;
 	public screenSize: number = window.innerWidth;
+	public readonly MOBILE_SCREEN_SIZE = 959;
 	constructor(
 		private portfolio: PorfolioService,
 		private cdr: ChangeDetectorRef,
@@ -31,7 +32,7 @@ export class ProjectListComponent implements OnInit, OnDestroy {
 		this.listener.add(this.onMouseWheel$.subscribe());
 		window.setTimeout(
 			() => {
-				if(this.projects) return;
+				if(this.projects && this.projects.length) return;
 				this.loadingErrorMessage = ' (if this is taking too long there might be an error with the Bitbucket API)';
 				this.cdr.detectChanges();
 			},
@@ -51,14 +52,14 @@ export class ProjectListComponent implements OnInit, OnDestroy {
 		return fromEvent(document, 'mousewheel')
 			.pipe(
 				tap((event: MouseWheelEvent) => {
-					if(event.isTrusted && (this.screenSize > 960)) {
+					if(event.isTrusted && (this.screenSize > this.MOBILE_SCREEN_SIZE)) {
 						if((event.deltaY > 0) && (this.projectIndex < this.projects.length))
 							this.projectIndex++;
 						if((event.deltaY < 0) && (this.projectIndex > 1))
 							this.projectIndex--;
+						this.cdr.detectChanges();
 					}
 				}),
-				tap(_ => this.cdr.detectChanges()),
 			);
 	}
 	public get onScreenResize$(): Observable<any> {

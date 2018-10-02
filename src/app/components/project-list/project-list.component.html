@@ -1,5 +1,8 @@
-<div *ngIf="projects; else loading;">
-	<ng-container *ngIf="screenSize > 960; then fullView else mobileView;"></ng-container>
+<div *ngIf="projects && projects.length; else loading;">
+	<ng-container
+		*ngIf="screenSize > MOBILE_SCREEN_SIZE; then fullView; else mobileView;">
+	</ng-container>
+
 	<ng-template #fullView>
 		<div fxLayout="column" fxLayoutAlign="center center">
 			<mat-slider id="proj-slider" [(ngModel)]="projectIndex"
@@ -10,6 +13,7 @@
 			</app-project-item>
 		</div>
 	</ng-template>
+
 	<ng-template #mobileView>
 		<ul fxLayout="column" fxLayoutGap="5px" fxLayoutAlign="center center">
 			<li class="proj-item" *ngFor="let project of projects;">
@@ -20,7 +24,9 @@
 </div>
 
 <ng-template #loading>
-	<p id="loading-p">Just a second, getting the projects{{loadingErrorMessage}}...</p>
+	<p id="loading-p">
+		Just a second, getting the projects{{loadingErrorMessage}}...
+	</p>
 </ng-template>
 
 <app-footer></app-footer>
