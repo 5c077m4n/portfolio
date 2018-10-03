@@ -45,5 +45,9 @@ export class AppComponent {
 			'npm',
 			this.sanitizer.bypassSecurityTrustResourceUrl('assets/images/icons/npm.svg')
 		);
+		this.iconRegistry.addSvgIcon(
+			'stats',
+			this.sanitizer.bypassSecurityTrustResourceUrl('assets/images/icons/stats.svg')
+		);
 	}
 }
