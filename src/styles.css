@@ -9,5 +9,3 @@ html {
 	height: 100%;
 }
 html > body { margin: 5px; }
-a, a:visited { color: #8e8989; }
-a:hover { color: #565656; }

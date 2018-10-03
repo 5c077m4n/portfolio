@@ -25,8 +25,9 @@
 		<img mat-card-image src="{{project.links.avatar.href}}"
 			(click)="showSidePanel = !showSidePanel;" />
 		<mat-card-actions>
-			<a mat-button href="{{project.links.html.href}}" target="_blank" fxFill>
-				View Source <mat-icon svgIcon="code"></mat-icon>
+			<a mat-button href="{{project.links.html.href}}" target="_blank"
+				fxLayoutAlign="center center" fxFill>
+				View Source <mat-icon svgIcon="new_tab"></mat-icon>
 			</a>
 		</mat-card-actions>
 	</mat-card>
@@ -50,5 +51,11 @@
 			<p><strong>Size:</strong> {{project.size}} bytes.</p>
 			<p><strong>Main language:</strong> {{project.language}}.</p>
 		</mat-card-content>
+		<mat-card-actions>
+			<a *ngIf="project.website" mat-button href="{{project.website}}"
+				target="_blank" rel="noopener noreferrer" fxFill fxLayoutAlign="center center">
+				Project's website <mat-icon svgIcon="new_tab"></mat-icon>
+			</a>
+		</mat-card-actions>
 	</mat-card>
 </div>
