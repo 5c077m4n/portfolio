@@ -8,7 +8,7 @@
 		</mat-card-header>
 		<mat-card-content class="clone-methods">
 			<div *ngFor="let method of project.links.clone;">
-				<p><strong>{{method.name}}:</strong></p>
+				<h4>{{method.name}}:</h4>
 				<mat-form-field>
 					<input matInput value="{{method.href}}" disabled />
 				</mat-form-field>
@@ -18,12 +18,12 @@
 
 	<mat-card fxFill [ngClass]="showSidePanel? 'info-card' : ''">
 		<mat-card-header (click)="showSidePanel = !showSidePanel;">
-			<mat-card-title class="proj-name">
-				<h3>{{project.name | uppercase}}</h3>
+			<mat-card-title class="proj-name-container">
+				<h2 class="proj-name">{{project.name | uppercase}}</h2>
 			</mat-card-title>
 		</mat-card-header>
 		<img mat-card-image src="{{project.links.avatar.href}}"
-			(click)="showSidePanel = !showSidePanel;" />
+			(click)="showSidePanel = !showSidePanel;" alt="Project's picture" />
 		<mat-card-actions>
 			<a mat-button href="{{project.links.html.href}}" target="_blank"
 				fxLayoutAlign="center center" fxFill>
@@ -45,11 +45,19 @@
 				<p>Last modified: {{project.updated_on | date: 'dd/MM/yyyy'}}</p>
 			</mat-card-subtitle>
 		</mat-card-header>
-		<mat-card-content>
-			<p *ngIf="project.description"><strong>About:</strong> {{project.description}}</p>
-			<p><strong>Does it have issues?</strong> {{project.has_issues? 'Yes' : 'No'}}.</p>
-			<p><strong>Size:</strong> {{project.size}} bytes.</p>
-			<p><strong>Main language:</strong> {{project.language}}.</p>
+		<mat-card-content fxLayout="column" fxLayoutGap="7px">
+			<span *ngIf="project.description">
+				<h4 class="proj-desc-title">About:</h4><span>{{project.description}}</span>
+			</span>
+			<span>
+				<h4 class="proj-desc-title">Does it have issues?</h4><span>{{project.has_issues? 'Yes' : 'No'}}.</span>
+			</span>
+			<span>
+				<h4 class="proj-desc-title">Size:</h4><span>{{project.size}} bytes.</span>
+			</span>
+			<span>
+				<h4 class="proj-desc-title">Main language:</h4><span>{{project.language}}.</span>
+			</span>
 		</mat-card-content>
 		<mat-card-actions>
 			<a *ngIf="project.website" mat-button href="{{project.website}}"

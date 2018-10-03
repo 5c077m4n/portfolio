@@ -1,4 +1,13 @@
 .clone-methods { overflow: auto; }
-.proj-name { height: 30px; }
+.proj-name-container { height: 30px; }
+.proj-name { font-size: 16px; }
 .info-card { background-color: transparent; }
 .info-card > img[mat-card-image] { opacity: 0.5; }
+
+.proj-desc-title {
+	display: inline;
+}
+.proj-desc-title + span {
+	display: inline;
+	padding-left: 5px;
+}
