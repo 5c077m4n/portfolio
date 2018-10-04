@@ -54,7 +54,7 @@
 			</span>
 			<span>
 				<h4 class="proj-desc-title">Size:</h4>
-				<span>{{numberWithCommas(project.size)}} bytes.</span>
+				<span>{{project.size | formatNumberCommas}} bytes.</span>
 			</span>
 			<span>
 				<h4 class="proj-desc-title">Main language:</h4><span>{{project.language}}.</span>

@@ -11,6 +11,7 @@ import { AppComponent } from './app.component';
 import { ProjectItemComponent } from './components/project-item/project-item.component';
 import { ProjectListComponent } from './components/project-list/project-list.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { FormatNumberCommasPipe } from './pipes/format-number-commas.pipe';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { FooterComponent } from './components/footer/footer.component';
 		AppComponent,
 		ProjectItemComponent,
 		ProjectListComponent,
-		FooterComponent
+		FooterComponent,
+		FormatNumberCommasPipe
 	],
 	imports: [
 		BrowserModule,
