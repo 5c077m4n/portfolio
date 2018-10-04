@@ -49,5 +49,9 @@ export class AppComponent {
 			'stats',
 			this.sanitizer.bypassSecurityTrustResourceUrl('assets/images/icons/stats.svg')
 		);
+		this.iconRegistry.addSvgIcon(
+			'email',
+			this.sanitizer.bypassSecurityTrustResourceUrl('assets/images/icons/email.svg')
+		);
 	}
 }
