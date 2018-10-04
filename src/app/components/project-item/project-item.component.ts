@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
-import { trigger, transition, style, animate, group } from '@angular/animations';
+import { trigger, transition, style, animate } from '@angular/animations';
 
 
 @Component({
@@ -24,4 +24,8 @@ export class ProjectItemComponent implements OnInit {
 	public showSidePanel = false;
 	constructor() {}
 	ngOnInit() {}
+
+	public numberWithCommas(x: number): string {
+		return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+	}
 }

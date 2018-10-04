@@ -53,7 +53,8 @@
 				<h4 class="proj-desc-title">Does it have issues?</h4><span>{{project.has_issues? 'Yes' : 'No'}}.</span>
 			</span>
 			<span>
-				<h4 class="proj-desc-title">Size:</h4><span>{{project.size}} bytes.</span>
+				<h4 class="proj-desc-title">Size:</h4>
+				<span>{{numberWithCommas(project.size)}} bytes.</span>
 			</span>
 			<span>
 				<h4 class="proj-desc-title">Main language:</h4><span>{{project.language}}.</span>
