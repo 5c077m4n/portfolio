@@ -1,0 +1,15 @@
+<div *ngIf="modules && modules.length; else loading;">
+	<ul fxLayout="column" fxLayoutGap="5px">
+		<li *ngFor="let module of modules;" fxFill>
+			<app-module-item [module]="module"></app-module-item>
+		</li>
+	</ul>
+</div>
+
+<ng-template #loading>
+	<p id="loading-p">
+		Just a second, getting the modules{{loadingErrorMessage}}...
+	</p>
+</ng-template>
+
+<button mat-raised-button routerLink="/" fxFill>Back Home</button>

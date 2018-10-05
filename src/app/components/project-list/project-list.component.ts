@@ -4,7 +4,7 @@ import {
 import { Observable, fromEvent, Subscription } from 'rxjs';
 import { tap, map } from 'rxjs/operators';
 
-import { PorfolioService } from '../../services/porfolio.service';
+import { PortfolioService } from '../../services/portfolio.service';
 
 
 @Component({
@@ -21,7 +21,7 @@ export class ProjectListComponent implements OnInit, OnDestroy {
 	public screenSize: number = window.innerWidth;
 	public readonly MOBILE_SCREEN_SIZE = 959;
 	constructor(
-		private portfolio: PorfolioService,
+		private portfolio: PortfolioService,
 		private cdr: ChangeDetectorRef,
 	) {
 		this.listener = new Subscription();
@@ -33,10 +33,10 @@ export class ProjectListComponent implements OnInit, OnDestroy {
 		window.setTimeout(
 			() => {
 				if(this.projects && this.projects.length) return;
-				this.loadingErrorMessage = ' (if this is taking too long there might be an error with the Bitbucket API)';
+				this.loadingErrorMessage =
+					' (if this is taking too long there might be an error with the Bitbucket API)';
 				this.cdr.detectChanges();
-			},
-			5000
+			}, 5000
 		);
 	}
 
