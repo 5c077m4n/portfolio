@@ -21,6 +21,10 @@
 			<h3 class="module-desc-title">Final score:</h3>
 			<span>{{module.score.final | percent}}</span>
 		</span>
+		<span>
+			<h3 class="module-desc-title">Total Downloads:</h3>
+			<span>{{module.packageDetails.totalDownloads | formatNumberCommas}}</span>
+		</span>
 	</mat-card-content>
 	<mat-card-actions>
 		<a mat-button href="{{module.package.links.npm}}" target="_blank"
