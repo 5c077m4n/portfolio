@@ -46,7 +46,6 @@ export class ModuleListComponent implements OnInit {
 					);
 					return forkJoin(obsArr);
 				}),
-				tap(() => console.log(this.modules)),
 				tap(_ => this.cdr.detectChanges()),
 			);
 	}
