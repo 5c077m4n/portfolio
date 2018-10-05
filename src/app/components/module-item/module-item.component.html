@@ -4,27 +4,34 @@
 			<h2 class="proj-name">{{module.package.name | uppercase}}</h2>
 		</mat-card-title>
 	</mat-card-header>
-	<mat-card-content fxLayout="column">
-		<span>
-			<h3 class="module-desc-title">Quality score:</h3>
-			<span>{{module.score.detail.quality | percent}}</span>
-		</span>
-		<span>
-			<h3 class="module-desc-title">Maintenance score:</h3>
-			<span>{{module.score.detail.maintenance | percent}}</span>
-		</span>
-		<span>
-			<h3 class="module-desc-title">Popularity score:</h3>
-			<span>{{module.score.detail.popularity | percent}}</span>
-		</span>
-		<span>
-			<h3 class="module-desc-title">Final score:</h3>
-			<span>{{module.score.final | percent}}</span>
-		</span>
-		<span>
-			<h3 class="module-desc-title">Total Downloads:</h3>
-			<span>{{module.packageDetails.totalDownloads | formatNumberCommas}}</span>
-		</span>
+	<mat-card-content fxLayout="row" fxLayout.lt-sm="column" fxLayoutAlign="space-between center">
+		<div fxLayout="column">
+			<span>
+				<h3 class="module-desc-title">Quality score:</h3>
+				<span>{{module.score.detail.quality | percent}}</span>
+			</span>
+			<span>
+				<h3 class="module-desc-title">Maintenance score:</h3>
+				<span>{{module.score.detail.maintenance | percent}}</span>
+			</span>
+			<span>
+				<h3 class="module-desc-title">Popularity score:</h3>
+				<span>{{module.score.detail.popularity | percent}}</span>
+			</span>
+			<span>
+				<h3 class="module-desc-title">Final score:</h3>
+				<span>{{module.score.final | percent}}</span>
+			</span>
+			<span>
+				<h3 class="module-desc-title">Github stars:</h3>
+				<span>{{module.packageDetails.collected.github.starsCount}}</span>
+			</span>
+			<span>
+				<h3 class="module-desc-title">Total Downloads:</h3>
+				<span>{{module.packageDetails.totalDownloads | formatNumberCommas}}</span>
+			</span>
+		</div>
+		<canvas #moduleChart fxFlex="70%"></canvas>
 	</mat-card-content>
 	<mat-card-actions>
 		<a mat-button href="{{module.package.links.npm}}" target="_blank"

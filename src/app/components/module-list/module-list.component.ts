@@ -38,23 +38,46 @@ export class ModuleListComponent implements OnInit {
 				tap(resArr => this.modules = resArr),
 				switchMap(resArr => {
 					const obsArr = resArr.map((res, index) =>
-						this.portfolio.getNpmPackage(res.package.name)
-							.pipe(tap(pkgDtls => {
-								pkgDtls.totalDownloads = this.countDownloads(pkgDtls)
-								this.modules[index].packageDetails = pkgDtls;
-							}))
+						this.moduleDetials(res.package.name)
+							.pipe(tap(pkgDtls =>
+								this.modules[index].packageDetails = pkgDtls
+							))
 					);
 					return forkJoin(obsArr);
 				}),
 				tap(_ => this.cdr.detectChanges()),
 			);
 	}
+	public moduleDetials(pkgName: string): Observable<any> {
+		return this.portfolio.getNpmPackage(pkgName)
+			.pipe(
+				map(pkgDtls => {
+					pkgDtls.totalDownloads = this.countDownloads(pkgDtls);
+					return pkgDtls;
+				}),
+				map(pkgDtls => {
+					pkgDtls.collected.npm.downloads = this.createMidDate(pkgDtls);
+					return pkgDtls;
+				}),
+			);
+	}
 
 	private countDownloads(pkg: any): number {
-		return pkg
-			.collected
-			.npm
-			.downloads
-			.reduce((accu, curr) => accu += curr.count, 0);
+		const dls = pkg.collected.npm.downloads;
+		let i = dls.length, counter = 0;
+		while(i--) counter += dls[i].count;
+		return counter;
+	}
+	private createMidDate(pkg: any): Object[] {
+		const dls = pkg.collected.npm.downloads;
+		let i = dls.length;
+		while(i--) {
+			dls[i].from = new Date(dls[i].from);
+			dls[i].to = new Date(dls[i].to);
+			dls[i].midDate = new Date(
+				(dls[i].from.getTime() + dls[i].to.getTime()) / 2
+			);
+		}
+		return dls;
 	}
 }

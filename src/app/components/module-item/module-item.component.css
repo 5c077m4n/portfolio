@@ -1,5 +1,6 @@
 .module-name-container { height: 30px; }
 .module-name { font-size: 16px; }
+.module-chart { height: 400px; }
 
 .info-card { background: transparent; }
 .module-desc-title {
@@ -9,3 +10,4 @@
 	display: inline;
 	padding-left: 5px;
 }
+canvas:hover { background: rgba(255, 255, 255, 0.75); }

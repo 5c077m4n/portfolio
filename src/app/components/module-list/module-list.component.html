@@ -1,9 +1,9 @@
 <div *ngIf="modules && modules.length; else loading;">
-	<ul fxLayout="column" fxLayoutGap="5px">
-		<li *ngFor="let module of modules;" fxFill>
-			<app-module-item [module]="module"></app-module-item>
-		</li>
-	</ul>
+	<div fxLayout="column" fxLayoutGap="5px">
+		<app-module-item *ngFor="let module of modules;"
+			[module]="module">
+		</app-module-item>
+	</div>
 </div>
 
 <ng-template #loading>
