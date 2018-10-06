@@ -49,8 +49,6 @@ export class ModuleItemComponent implements OnInit, OnDestroy, AfterViewInit {
 	}
 
 	ngOnDestroy(): void {
-		console.time('destroy');
 		this.moduleChart.destroy();
-		console.timeEnd('destroy');
 	}
 }
