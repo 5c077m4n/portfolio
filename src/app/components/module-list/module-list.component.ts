@@ -61,12 +61,12 @@ export class ModuleListComponent implements OnInit {
 				}),
 			);
 	}
-	// public moduleDownloadCount(pkgName: string): Observable<any> {
-	// 	return this.portfolio.getNpmjsDownloadCount(pkgName)
-	// 		.pipe(
-	// 			map(res => res.downloads || [])
-	// 		);
-	// }
+	public moduleDownloadCount(pkgName: string): Observable<any> {
+		return this.portfolio.getNpmjsDownloadCount(pkgName)
+			.pipe(
+				map(res => res.downloads || []),
+			);
+	}
 
 	private countDownloads(pkg: any): number {
 		const dls = pkg.collected.npm.downloads;

@@ -40,16 +40,20 @@ import { HttpClient } from '@angular/common/http';
 				catchError(this.handleError('getNpmPackage', [])),
 			);
 	}
-	// public getNpmjsDownloadCount(name: string): Observable<any> {
-	// 	return this.http.get(`${this.npmjsApiUrl}/downloads/range/last-year/${name}`)
-	// 		.pipe(
-	// 			tap(res => {
-	// 				if(!res) console.error('There was an error in getting the npm.js package.');
-	// 			}),
-	// 			retryWhen(error => error.pipe(delay(3000), take(5))),
-	// 			catchError(this.handleError('getNpmjsDownloadCount', [])),
-	// 		);
-	// }
+	/**
+	 * @function getNpmjsDownloadCount - there is an error with the SSL certificate in chrome 70.
+	 * @param name - package's name.
+	 */
+	public getNpmjsDownloadCount(name: string): Observable<any> {
+		return this.http.get(`${this.npmjsApiUrl}/downloads/range/last-year/${name}`)
+			.pipe(
+				tap(res => {
+					if(!res) console.error('There was an error in getting the npm.js package.');
+				}),
+				retryWhen(error => error.pipe(delay(3000), take(5))),
+				catchError(this.handleError('getNpmjsDownloadCount', [])),
+			);
+	}
 
 	/** @function handleError - Error handler */
 	private handleError<T>(operation = 'operation', result?: T): (any) => Observable<T> {
