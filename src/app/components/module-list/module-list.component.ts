@@ -32,7 +32,7 @@ export class ModuleListComponent implements OnInit {
 	}
 
 	public get module$(): Observable<any> {
-		return this.portfolio.getNpmPackages()
+		return this.portfolio.getNpmioPackages()
 			.pipe(
 				map(res => (res)? res.results : []),
 				tap(resArr => this.modules = resArr),
@@ -49,7 +49,7 @@ export class ModuleListComponent implements OnInit {
 			);
 	}
 	public moduleDetials(pkgName: string): Observable<any> {
-		return this.portfolio.getNpmPackage(pkgName)
+		return this.portfolio.getNpmioPackage(pkgName)
 			.pipe(
 				map(pkgDtls => {
 					pkgDtls.totalDownloads = this.countDownloads(pkgDtls);
@@ -61,6 +61,12 @@ export class ModuleListComponent implements OnInit {
 				}),
 			);
 	}
+	// public moduleDownloadCount(pkgName: string): Observable<any> {
+	// 	return this.portfolio.getNpmjsDownloadCount(pkgName)
+	// 		.pipe(
+	// 			map(res => res.downloads || [])
+	// 		);
+	// }
 
 	private countDownloads(pkg: any): number {
 		const dls = pkg.collected.npm.downloads;

@@ -1,6 +1,6 @@
-import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef, OnDestroy } from '@angular/core';
 import { Router, NavigationStart } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
 
@@ -10,14 +10,15 @@ import { tap } from 'rxjs/operators';
 	templateUrl: './footer.component.html',
 	styleUrls: ['./footer.component.css']
 })
-export class FooterComponent implements OnInit {
+export class FooterComponent implements OnInit, OnDestroy {
 	public url: string;
+	private listener: Subscription;
 	constructor(
 		private cdr: ChangeDetectorRef,
 		private router: Router
 	) {}
 	ngOnInit() {
-		this.url$.subscribe();
+		this.listener = this.url$.subscribe();
 	}
 
 	public get url$(): Observable<any> {
@@ -29,7 +30,8 @@ export class FooterComponent implements OnInit {
 				tap(_ => this.cdr.detectChanges())
 			);
 	}
-	public get currentUrl(): string {
-		return this.router.url;
+
+	ngOnDestroy(): void {
+		this.listener.unsubscribe();
 	}
 }
