@@ -6,7 +6,6 @@ import {
 	ViewChild,
 	AfterViewInit,
 	OnDestroy,
-	NgZone,
 	ChangeDetectionStrategy,
 	ChangeDetectorRef
 } from '@angular/core';
@@ -26,6 +25,7 @@ export class ModuleItemComponent implements OnInit, OnDestroy, AfterViewInit {
 	constructor(private cdr: ChangeDetectorRef) {}
 	ngOnInit() {}
 	ngAfterViewInit(): void {
+		Chart.defaults.global.defaultFontColor = 'black';
 		this.moduleChart = new Chart(this.ctx.nativeElement, {
 			type: 'line',
 			data: {
@@ -49,6 +49,8 @@ export class ModuleItemComponent implements OnInit, OnDestroy, AfterViewInit {
 	}
 
 	ngOnDestroy(): void {
+		console.time('destroy');
 		this.moduleChart.destroy();
+		console.timeEnd('destroy');
 	}
 }

@@ -4,6 +4,14 @@
 	margin-right: 10px;
 	transition: fill 0.1s ease;
 }
+.floating-button{
+	position: fixed;
+	width: 60px;
+	height: 60px;
+	bottom: 40px;
+	right: 40px;
+	box-shadow: 2px 2px 3px #999;
+}
 
 a, a:visited {
 	color: gray;

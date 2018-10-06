@@ -37,3 +37,7 @@
 		</a>
 	</div>
 </div>
+<button mat-fab class="floating-button" color="primary"
+	[routerLink]="(url === '/')? '/npm' : '/'">
+	{{(url === '/npm')? 'Home' : 'NPM'}}
+</button>
