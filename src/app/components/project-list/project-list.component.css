@@ -3,6 +3,7 @@ ul {
 	padding: 0;
 	overflow: hidden;
 }
+
 .proj-item {
 	display: inline-block;
 	list-style-type: none;

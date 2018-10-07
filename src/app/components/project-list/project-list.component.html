@@ -6,7 +6,8 @@
 	<ng-template #fullView>
 		<div fxLayout="column" fxLayoutAlign="center center">
 			<mat-slider id="proj-slider" [(ngModel)]="projectIndex"
-				min="1" max="{{projects.length}}">
+				min="1" max="{{projects.length}}"
+				matTooltip="Use your mouse wheel">
 			</mat-slider>
 			<app-project-item class="proj-item"
 				[project]="projects[projectIndex-1]">
