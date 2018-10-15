@@ -10,7 +10,8 @@
 	height: 60px;
 	bottom: 40px;
 	right: 40px;
-	box-shadow: 2px 2px 3px #999;
+	background-color: transparent;
+	color: black;
 }
 
 a, a:visited {

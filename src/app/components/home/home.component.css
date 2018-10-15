@@ -1,0 +1,22 @@
+@keyframes bounce {
+	0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+	40% { transform: translateY(-30px); }
+	60% { transform: translateY(-15px); }
+}
+
+.arrow-icon {
+	position: absolute;
+	bottom: 10px;
+	left: 50%;
+}
+.bounce { animation: bounce 2s infinite; }
+.router-link {
+	font-size: 48px;
+	height: 64px;
+}
+
+a, a:visited {
+	color: gray;
+	fill: gray;
+}
+a:hover { color: #565656; }

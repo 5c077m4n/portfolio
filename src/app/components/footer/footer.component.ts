@@ -1,6 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef, OnDestroy } from '@angular/core';
 import { Router, NavigationStart } from '@angular/router';
-import { Observable, Subscription } from 'rxjs';
+import { Observable, Subscription, Subject } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
 
@@ -12,26 +12,28 @@ import { tap } from 'rxjs/operators';
 })
 export class FooterComponent implements OnInit, OnDestroy {
 	public url: string;
-	private listener: Subscription;
+	// private listener: Subscription;
 	constructor(
 		private cdr: ChangeDetectorRef,
 		private router: Router
-	) {}
+	) {
+		// this.listener = new Subscription();
+	}
 	ngOnInit() {
-		this.listener = this.url$.subscribe();
+		// this.listener.add(this.url$.subscribe());
 	}
 
-	public get url$(): Observable<any> {
-		return this.router.events
-			.pipe(
-				tap((e: NavigationStart) => {
-					if(e.constructor === NavigationStart) this.url = e.url;
-				}),
-				tap(_ => this.cdr.detectChanges())
-			);
-	}
+	// public get url$(): Observable<any> {
+	// 	return this.router.events
+	// 		.pipe(
+	// 			tap((e: NavigationStart) => {
+	// 				if(e.constructor === NavigationStart) this.url = e.url;
+	// 			}),
+	// 			tap(_ => this.cdr.detectChanges())
+	// 		);
+	// }
 
 	ngOnDestroy(): void {
-		this.listener.unsubscribe();
+		// this.listener.unsubscribe();
 	}
 }

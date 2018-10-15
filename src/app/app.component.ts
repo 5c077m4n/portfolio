@@ -53,5 +53,13 @@ export class AppComponent {
 			'email',
 			this.sanitizer.bypassSecurityTrustResourceUrl('assets/images/icons/email.svg')
 		);
+		this.iconRegistry.addSvgIcon(
+			'arrow-up',
+			this.sanitizer.bypassSecurityTrustResourceUrl('assets/images/icons/arrow-up.svg')
+		);
+		this.iconRegistry.addSvgIcon(
+			'arrow-down',
+			this.sanitizer.bypassSecurityTrustResourceUrl('assets/images/icons/arrow-down.svg')
+		);
 	}
 }

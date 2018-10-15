@@ -14,6 +14,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { FormatNumberCommasPipe } from './pipes/format-number-commas.pipe';
 import { ModuleItemComponent } from './components/module-item/module-item.component';
 import { ModuleListComponent } from './components/module-list/module-list.component';
+import { HomeComponent } from './components/home/home.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { ModuleListComponent } from './components/module-list/module-list.compon
 		FooterComponent,
 		FormatNumberCommasPipe,
 		ModuleItemComponent,
-		ModuleListComponent
+		ModuleListComponent,
+		HomeComponent
 	],
 	imports: [
 		BrowserModule,
