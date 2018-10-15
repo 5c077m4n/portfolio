@@ -7,7 +7,7 @@
 .arrow-icon {
 	position: absolute;
 	bottom: 10px;
-	left: 50%;
+	left: calc(50% - 6px);
 }
 .bounce { animation: bounce 2s infinite; }
 .router-link {
