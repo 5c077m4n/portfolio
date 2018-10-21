@@ -7,6 +7,13 @@
 	.arrow-icon { display: none; }
 }
 
+#profile-img {
+	border-radius: 50%;
+	width: 50px;
+	height: auto;
+	box-shadow: 5px 5px 5px 0 skyblue;
+}
+
 .arrow-icon {
 	position: absolute;
 	bottom: 10px;
@@ -23,4 +30,5 @@ a, a:visited {
 	fill: gray;
 }
 a:hover { color: #565656; }
+h1 { margin-bottom: 0; }
 nav > p { margin: 0; }
