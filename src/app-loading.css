@@ -1,6 +1,7 @@
 .app-loading > .logo {
 	background: url('./assets/images/me.jpg') center center no-repeat;
 	background-size: cover;
+	filter: grayscale(100%);
 	position: fixed;
 	top: 0;
 	bottom: 0;
