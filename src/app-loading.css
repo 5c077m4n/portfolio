@@ -1,5 +1,5 @@
-.app-loading > .logo {
-	background: url('./assets/images/me.min.jpg') center center no-repeat;
+#app-loading > #app-loading-logo {
+   background:  url('data:image/jpeg;base64,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') center center no-repeat;
 	background-size: cover;
 	filter: grayscale(100%);
 	position: fixed;
@@ -13,7 +13,7 @@
 	height: 50px;
 	box-shadow: 5px 5px 5px 0 skyblue;
 }
-.app-loading > .spinner {
+#app-loading > #app-loading-spinner {
 	height: 200px;
 	width: 200px;
 	animation: rotate 2s linear infinite;
@@ -25,7 +25,7 @@
 	right: 0;
 	margin: auto;
 }
-.app-loading > .spinner > .path {
+#app-loading > #app-loading-spinner > #app-loading-path {
 	stroke-dasharray: 1, 200;
 	stroke-dashoffset: 0;
 	animation: dash 1.5s ease-in-out infinite;
